@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
         String apiKey = System.getenv("YANDEX_WEATHER_KEY");
         if (apiKey == null || apiKey.isBlank()) {
-            apiKey = "ВАШ_КЛЮЧ_API_ЯНДЕКС_ПОГОДЫ";
+            apiKey = "КЛЮЧ_API_ЯНДЕКС_ПОГОДЫ";
         }
 
         WeatherClient weatherClient = new YandexWeatherClient(HttpClient.newHttpClient(), apiKey);

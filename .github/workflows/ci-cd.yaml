@@ -15,10 +15,10 @@ jobs:
       - name: Получение исходного кода репозитория
         uses: actions/checkout@v4
 
-      - name: Установка JDK 17 и кэширование зависимостей Maven
+      - name: Установка JDK 21 и кэширование зависимостей Maven
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
 

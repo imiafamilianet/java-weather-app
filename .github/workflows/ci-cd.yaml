@@ -1,0 +1,33 @@
+name: Java CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    name: Сборка, тестирование и публикация артефакта
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Получение исходного кода репозитория
+        uses: actions/checkout@v4
+
+      - name: Установка JDK 17 и кэширование зависимостей Maven
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Сборка проекта и запуск модульных тестов
+        run: mvn -B clean package
+
+      - name: Сохранение собранного JAR-артефакта
+        uses: actions/upload-artifact@v4
+        with:
+          name: weather-service-jar
+          path: target/*.jar
+          retention-days: 7
